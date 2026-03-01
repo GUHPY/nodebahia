@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: projeto-downloader
+    env: python
+    region: ohio
+    plan: free
+    buildCommand: "chmod +x build.sh && ./build.sh"
+    startCommand: "gunicorn app:app -w 4 -b 0.0.0.0:$PORT"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10.13
